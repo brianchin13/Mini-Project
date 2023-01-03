@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title style="color: brown">Medic Login</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="css/login.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
+
+</head>
+<body>
+<div class="container" id="container">
+
+
+    <div class="form-container  sign-in-container">
+        <form method="POST" action="backend.php">
+            <div class="header" id="signInText">Sign In</div>
+            <br>
+
+            <div class="button-input-group">
+                <div class="group input-group">
+                    <input type="text" placeholder="Login ID" name="loginid" id="loginText" required>
+                </div>
+                <div class="group input-group">
+                    <input type="password" placeholder="Password" name="password" required>
+                </div>
+                <div class="form-link forgot">
+                    <a href="#" id="loginHrefText" class="login-link">Staff Login</a>
+                </div>
+                <div class="group button-group">
+                    <input type="submit" id="loginbtn" name="loginbtn" value="Login" class="btn btn-primary">
+                </div>
+            </div>
+        </form>
+    </div>
+
+
+    <div class="overlay-container">
+        <div class="overlay">
+            <div class="overlay-panel overlay-left">
+                <h1>Welcome Back!</h1>
+                <p>Please login here</p>
+
+                <div class="group button-group">
+                    <button class="ghost" id="signIn">Sign in</button>
+                </div>
+            </div>
+
+            <div class="overlay-panel overlay-right">
+                <h1>Welcome to Medic !</h1>
+                <p>Please sign up here </p>
+
+                <div class="group button-group">
+                    <button class="ghost" id="signUp">Sign up</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+<script>
+    const signUpButton = document.getElementById("signUp");
+    const signInButton = document.getElementById("signIn");
+    const container = document.getElementById("container");
+    const staffLogin = document.getElementById("loginHrefText");
+
+
+    signUpButton.addEventListener("click", () => {
+        window.location.href = 'signup.html';
+    });
+
+    signInButton.addEventListener("click", () => {
+        container.classList.remove("right-panel-active");
+    });
+
+    staffLogin.addEventListener("click", () => {
+
+        if (staffLogin.innerHTML === "Staff Login") {
+            document.getElementById("signInText").innerHTML = "Staff Sign In";
+            document.getElementById("loginText").placeholder = "Staff ID";
+            staffLogin.innerHTML = "Patient Login";
+        } else {
+            document.getElementById("signInText").innerHTML = "Sign In";
+            document.getElementById("loginText").placeholder = "Login ID";
+            staffLogin.innerHTML = "Staff Login";
+        }
+    });
+
+
+</script>
+</body>
+</html>
+
+

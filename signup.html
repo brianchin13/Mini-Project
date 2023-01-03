@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Medic Registration Form</title>
+    <link rel="stylesheet" href="css/signup.css">
+    <link rel="stylesheet" href="plugins/slick/slick.css">
+    <link rel="stylesheet" href="plugins/slick/slick-theme.css">
+    <link rel="stylesheet" href="plugins/fancybox/jquery.fancybox.min.css">
+    <link rel="stylesheet" href="plugins/bootstrap.min.css">
+    <link href="css/style.css" rel="stylesheet">
+
+</head>
+
+<body onload="generateUserID()">
+
+<div class="container">
+    <form action="backend.php" method="post" id="registerationForm">
+        <div class="header">Medic Registration Form</div>
+        <br>
+
+        <div class="button-input-group">
+
+            <input type="hidden" value="" name="userID" id="userID">
+
+            <div class="group input-group">
+                <label for="name">Enter your full name</label>
+                <input type="text" placeholder="Name" name="name" id="name" required>
+            </div>
+            <div class="group input-group">
+                <label for="ic_num">Enter your IC number</label>
+                <input type="text" placeholder="Identity card no." name="ic_num" id="ic_num" required>
+            </div>
+            <div class="group input-group">
+                <label for="email">Enter your email</label>
+                <input type="email" placeholder="Email" name="email" id="email" required>
+            </div>
+            <div class="group input-group">
+                <label for="loginid">Enter your Login ID</label>
+                <input type="text" placeholder="Login ID" name="loginID" id="loginID" required>
+            </div>
+            <div class="group input-group">
+                <label for="password">Enter your password</label>
+                <input type="password" placeholder="Password" name="password" id="password" required>
+            </div>
+            <div class="group input-group">
+                <label for="password">Reenter your password</label>
+                <input type="password" placeholder="Confirm Password" name="cPassword" id="cPassword" required>
+            </div>
+            <div class="group input-group">
+                <label for="address">Enter your Address</label>
+                <input type="text" placeholder="Address" name="address" id="address" required>
+            </div>
+            <div class="group input-group">
+                <label for="phoneNum">Enter your Phone number</label>
+                <input type="text" placeholder="Phone Number (without -)" name="phoneNum" id="phoneNum" required>
+            </div>
+
+            <div class="group input-group">
+                <label for="dob" class="col-md-4 control-label">Select your birthday</label>
+                <input type="date" name="dob" id="dob" class="col-md-4" required>
+            </div>
+
+            <div class="group input-group">
+                <label for="age">Enter your age</label>
+                <input type="text" placeholder="Age" name="age" class="col-md-4" id="age" required>
+            </div>
+
+            <div class="group input-group selectGrp">
+                <label for="gender" class="col-md-4 control-label">Select your gender</label>
+                <select name="gender" id="gender" class="col-md-4">
+                    <option value="MALE">Male</option>
+                    <option value="FEMALE">Female</option>
+                </select>
+            </div>
+
+            <div class="group input-group selectGrp">
+                <label for="foreigner" class="col-md-4 control-label">Are you a foreigner ?</label><br>
+                <select name="foreigner" id="foreigner" class="col-md-4">
+                    <option value="YES">Yes</option>
+                    <option value="NO" SELECTED>No</option>
+                </select>
+            </div>
+
+            <div class="group input-group" id="passportNo" style="display: none">
+                <label for="passportNum">Enter your passport number</label>
+                <input type="text" placeholder="Passport Number" name="passportNum" id="passportNum">
+            </div>
+
+            <div class="group button-group">
+                <input type="submit" class="btn btn-primary" name="registerBtn" value="Sign Up">
+            </div>
+
+            <div class="group button-group">
+                <button class="btn btn-primary" onclick="cancelRegistration()">Cancel</button>
+            </div>
+        </div>
+
+    </form>
+</div>
+
+
+</body>
+
+<script>
+    function cancelRegistration() {
+        window.location.href = "login.html";
+    }
+
+    document.getElementById("foreigner").addEventListener("change", function () {
+        if (this.value === "YES") {
+            document.getElementById("passportNo").style.display = "block";
+        } else {
+            document.getElementById("passportNo").style.display = "none";
+        }
+    });
+
+
+    function generateUserID() {
+        var userID = "";
+        var possible = "0123456789";
+
+        for (var i = 0; i < 3; i++)
+            userID +=possible.charAt(Math.floor(Math.random() * possible.length));
+
+        document.getElementById("userID").value = "U"+userID;
+        console.log("U"+userID);
+    }
+
+</script>
+</html>
